@@ -52,9 +52,15 @@ class SplashScreen : AppCompatActivity() {
                     )
                 ).body()?.url.toString()
                 if (currentUrl == "no") {
-                    startActivity(Intent(this@SplashScreen, QuizActivity::class.java))
+                    val intent = Intent(this@SplashScreen, QuizActivity::class.java)
+                    intent.putExtra("url", currentUrl)
+                    startActivity(intent)
+                    finish()
                 } else if (currentUrl == "nopush") {
-                    startActivity(Intent(this@SplashScreen, QuizActivity::class.java))
+                    val intent = Intent(this@SplashScreen, QuizActivity::class.java)
+                    intent.putExtra("url", currentUrl)
+                    startActivity(intent)
+                    finish()
                 } else {
                     Handler().postDelayed({
                         val intent = Intent(this@SplashScreen, ShowScreen::class.java)
@@ -82,4 +88,5 @@ class SplashScreen : AppCompatActivity() {
             }
         }
     }
+
 }

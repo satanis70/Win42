@@ -3,12 +3,17 @@ package com.example.win42
 import android.R
 import android.app.Activity
 import android.content.pm.ActivityInfo
+import android.net.Uri
 import android.view.View
+import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
+import android.webkit.WebView
 import android.widget.FrameLayout
+import androidx.activity.result.contract.ActivityResultContracts
 
 
-class CustomWebChromeClient(val activity: Activity, val fullscreenContainer: FrameLayout): WebChromeClient(){
+class CustomWebChromeClient(val activity: Activity, val fullscreenContainer: FrameLayout) :
+    WebChromeClient() {
     private var customView: View? = null
     private var customViewCallback: CustomViewCallback? = null
     private var originalOrientation = 0

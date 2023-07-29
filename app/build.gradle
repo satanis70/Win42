@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\key\\test.jks')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
     namespace 'com.example.win42'
     compileSdk 33
 
@@ -19,8 +27,9 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -45,4 +54,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
+    implementation 'com.google.android.gms:play-services-auth:20.6.0'
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 }
